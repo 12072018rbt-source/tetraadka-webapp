@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Тетрадка — мини‑приложение</title>
+<!-- Телеграм-скрипт -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<!-- Наши стили -->
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="wrap">
+<header class="card">
+<h1>Тетрадка 📚</h1>
+<p>Загрузи фотку страницы — я попробую распознать текст и найти ошибки. По‑честному! 🙂</p>
+</header>
+
+
+<section class="card">
+<div id="dropZone" class="drop">
+<input id="file" type="file" accept="image/*" capture="environment" />
+<div class="drop__title">Перетащи фотографию сюда или нажми, чтобы выбрать</div>
+<div class="drop__hint">Файл сожмём перед отправкой, чтобы не мучить интернет</div>
+</div>
+
+
+<div id="preview" class="preview hidden">
+<img id="previewImg" alt="предпросмотр" />
+<div class="preview__meta">
+<div id="fileName">image.jpg</div>
+<div id="fileInfo" class="muted">—</div>
+</div>
+</div>
+
+
+<div class="row">
+<button id="sendBtn" disabled>🚀 Отправить на проверку</button>
+<button id="clearBtn" class="ghost" disabled>Сбросить</button>
+<span id="busy" class="busy hidden"><span class="spinner"></span> Обработка…</span>
+</div>
+</section>
+
+
+<section id="results" class="grid hidden">
+<div class="card">
+<h3>🧾 Распознанный текст</h3>
+<pre id="textOut" class="code">—</pre>
+<div class="row">
+<button id="copyBtn" class="ghost">Скопировать текст</button>
+<button id="saveJson" class="ghost">Скачать JSON</button>
+</div>
+</div>
+<div class="card">
+<h3>❗ Ошибки</h3>
+<div id="mistakes" class="list"></div>
+</div>
+</section>
+
+
+<footer class="muted">
+Сделано по‑простому, как школьный проект ✌️ · Тема подстраивается под Telegram
+</footer>
+</div>
+
+
+<!-- Наша логика -->
+<script src="app.js"></script>
+</body>
+</html>
